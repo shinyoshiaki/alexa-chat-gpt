@@ -1,0 +1,40 @@
+{
+  "name": "proxy",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "author": "shinyoshiaki2012@gmail.com",
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "run-s compile:type compile:esm compile:cjs",
+    "compile:cjs": "esbuild src/index.ts --bundle --platform=node --format=cjs --target=es2020 --outfile=lib/index.js",
+    "compile:esm": "esbuild src/index.ts --bundle --platform=node --format=esm --target=es2020 --outfile=lib/index.mjs",
+    "compile:type": "rm -rf lib && tsc -p tsconfig.production.json --emitDeclarationOnly",
+    "dev": "tsx watch --env-file=../../.env src/index.ts",
+    "lint": "biome check --write src",
+    "type": "tsc -p ./tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.9.0",
+    "@hono/node-server": "^1.13.7",
+    "@sinclair/typebox": "^0.28.18",
+    "@werift/openai-webrtc": "^0.0.5",
+    "express": "^4.21.2",
+    "hono": "^4.6.16",
+    "openapi3-ts": "^4.1.2",
+    "sdp-transform": "^2.15.0",
+    "speaker": "^0.5.5",
+    "uuid": "^11.0.5",
+    "werift": "^0.21.6"
+  },
+  "devDependencies": {
+    "@types/sdp-transform": "^2.4.9",
+    "@types/uuid": "^10.0.0"
+  }
+}
