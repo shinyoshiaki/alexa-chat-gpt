@@ -15,7 +15,9 @@
     "type": "npm run type --workspaces --if-present",
     "proxy": "cd packages/proxy && npm run dev"
   },
-  "dependencies": {},
+  "dependencies": {
+    "werift": "^0.21.9"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/jest": "^29.2.4",
